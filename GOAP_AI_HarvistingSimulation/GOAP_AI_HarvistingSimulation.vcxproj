@@ -139,7 +139,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EGraphConnectionTypes.cpp" />
+    <ClCompile Include="EGraphNodeTypes.cpp" />
+    <ClCompile Include="GOAPAgent.cpp" />
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp" />
+    <ClCompile Include="GOAP_Application.cpp" />
+    <ClCompile Include="GOAP_Planner.cpp" />
+    <ClCompile Include="LocationNode.cpp" />
+    <ClCompile Include="Resources.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EGraphConnectionTypes.h" />
+    <ClInclude Include="EGraphEnums.h" />
+    <ClInclude Include="EGraphNodeTypes.h" />
+    <ClInclude Include="EIGraph.h" />
+    <ClInclude Include="GOAPAgent.h" />
+    <ClInclude Include="GOAP_Application.h" />
+    <ClInclude Include="GOAP_Planner.h" />
+    <ClInclude Include="LocationNode.h" />
+    <ClInclude Include="Resources.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

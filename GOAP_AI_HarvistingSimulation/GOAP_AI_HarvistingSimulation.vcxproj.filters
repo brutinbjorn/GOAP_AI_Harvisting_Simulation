@@ -13,10 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Elite FrameWork">
+      <UniqueIdentifier>{139411fa-9594-41b1-90ce-53d17c291c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elite FrameWork\Connection">
+      <UniqueIdentifier>{da9ca365-9923-4b03-9125-aacab1661147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elite FrameWork\Nodes">
+      <UniqueIdentifier>{ea12893b-85be-43dd-a67c-68e0993fd07c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elite FrameWork\Graph">
+      <UniqueIdentifier>{f541f7a3-da4b-4b62-8a0a-904ea986a3b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GOAP_Planner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GOAPAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EGraphConnectionTypes.cpp">
+      <Filter>Elite FrameWork\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="EGraphNodeTypes.cpp">
+      <Filter>Elite FrameWork\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="GOAP_Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LocationNode.cpp">
+      <Filter>Elite FrameWork\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GOAP_Planner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GOAPAgent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EGraphConnectionTypes.h">
+      <Filter>Elite FrameWork\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="EGraphEnums.h">
+      <Filter>Elite FrameWork\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="EGraphNodeTypes.h">
+      <Filter>Elite FrameWork\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="EIGraph.h">
+      <Filter>Elite FrameWork\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="GOAP_Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationNode.h">
+      <Filter>Elite FrameWork\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

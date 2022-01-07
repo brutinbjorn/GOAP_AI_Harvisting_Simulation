@@ -2,15 +2,34 @@
 //
 
 #include <iostream>
+#include "GOAP_Application.h"
+
+
 
 int main()
 {
     std::cout << "Hello GOAP AI\n";
-
-
-
+	GOAP_Application* m_pApplictation = new GOAP_Application();
 	
+	m_pApplictation->Start();
+    std::string input;
+    char ch;
+    do
+    {
+        ch = std::cin.get();
+    	
+        if(ch != 'x')
+        {
+			std::cout << "1 run" << std::endl;
+            m_pApplictation->Update(1.f);
+        }
+
+    	
+    }
+    while (ch != 'x');
+
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
