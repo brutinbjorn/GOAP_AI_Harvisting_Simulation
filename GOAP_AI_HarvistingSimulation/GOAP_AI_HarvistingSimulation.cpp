@@ -6,8 +6,6 @@
 
 
 
-//Test Github Account
-
 int main()
 {
     std::cout << "Hello GOAP AI\n";
