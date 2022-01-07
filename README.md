@@ -16,6 +16,8 @@ ei: i can not tell it to MoveToRecource->harvest->ReturnToBase.
 only that it needs to earn points.
 
 
+Test to fix Account.
+
 What is GOAP?
 Goal Oriented Action Planning or GOAP, 
 looks a lot like FSM (finite state machine), 
