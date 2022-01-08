@@ -15,7 +15,7 @@ class AgentBase : public LocationNode
 public:
 	AgentBase(int idx) :LocationNode(idx){}
 
-	void DropOffResource();
+	void DropOffResource(){};
 private:
 	
 };
@@ -25,5 +25,5 @@ class ResourceNode : public LocationNode
 public:
 	ResourceNode(int idx): LocationNode(idx){}
 
-	bool GatherResource(GOAPAgent* m_Agent,Resource& NewResource);
+	bool GatherResource(GOAPAgent* m_Agent,Resource& NewResource){};
 };

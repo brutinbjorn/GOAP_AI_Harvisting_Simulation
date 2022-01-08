@@ -158,6 +158,7 @@
     <ClInclude Include="GOAP_Planner.h" />
     <ClInclude Include="LocationNode.h" />
     <ClInclude Include="Resources.h" />
+    <ClInclude Include="StatesAndTransistions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

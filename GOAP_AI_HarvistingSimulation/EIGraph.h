@@ -14,6 +14,10 @@
 #include <memory>
 #include <vector>
 
+//=== Management ===
+#define SAFE_DELETE(p) if (p) { delete (p); (p) = nullptr; }
+
+
 namespace Elite
 {
 	template <class T_NodeType, class T_ConnectionType>
@@ -71,19 +75,19 @@ namespace Elite
 
 		// (Pure) virtuals to be override by specific graph types
 		// ----------------------------------------------------
-		virtual Vector2 GetNodePos(T_NodeType* pNode) const = 0;
-		Vector2 GetNodePos(int idx) const {	return GetNodePos(GetNode(idx)); }
+		//virtual Vector2 GetNodePos(T_NodeType* pNode) const = 0;
+		//Vector2 GetNodePos(int idx) const {	return GetNodePos(GetNode(idx)); }
 
 		// Provide the opportunity for derived classes to differentiate the conceptual position from the world position
 		// Example: A grid position might consist of rows and columns, while the world position is expressed as a (x,y) coordinate
-		virtual Vector2 GetNodeWorldPos(int idx) const { return GetNodePos(idx); }
-		Vector2 GetNodeWorldPos(T_NodeType* pNode) const { return GetNodeWorldPos(pNode->GetIndex()); }
+		//virtual Vector2 GetNodeWorldPos(int idx) const { return GetNodePos(idx); }
+		//Vector2 GetNodeWorldPos(T_NodeType* pNode) const { return GetNodeWorldPos(pNode->GetIndex()); }
 
-		virtual int GetNodeIdxAtWorldPos(const Elite::Vector2& pos) const = 0;
-		T_NodeType* GetNodeAtWorldPos(const Elite::Vector2& pos) const { return IsNodeValid(GetNodeIdxAtWorldPos(pos)) ? GetNode(GetNodeIdxAtWorldPos(pos)) : nullptr; }
+		//virtual int GetNodeIdxAtWorldPos(const Elite::Vector2& pos) const = 0;
+		//T_NodeType* GetNodeAtWorldPos(const Elite::Vector2& pos) const { return IsNodeValid(GetNodeIdxAtWorldPos(pos)) ? GetNode(GetNodeIdxAtWorldPos(pos)) : nullptr; }
 
 		// Allow derived classes to implement a cloning function that returns a base class pointer
-		virtual shared_ptr<IGraph<T_NodeType, T_ConnectionType>> Clone() const { return nullptr; };
+		virtual std::shared_ptr<IGraph<T_NodeType, T_ConnectionType>> Clone() const { return nullptr; };
 
 	protected:
 		// A vector of adjacency pConnection lists, mapped to the indices of the nodes
@@ -183,7 +187,7 @@ namespace Elite
 	template<class T_NodeType, class T_ConnectionType>
 	inline std::vector<T_NodeType*> IGraph<T_NodeType, T_ConnectionType>::GetAllActiveNodes() const
 	{
-		vector<T_NodeType*> activeNodes{};
+		std::vector<T_NodeType*> activeNodes{};
 		for (auto n : m_Nodes)
 			if (n->GetIndex() != invalid_node_index)
 				activeNodes.push_back(n);
@@ -374,7 +378,7 @@ namespace Elite
 		auto isConnectionToThisNode = [idx](T_ConnectionType* pCon) { return pCon->GetTo() == idx; };
 		for (auto& c : m_Connections)
 		{
-			list<T_ConnectionType*>::iterator foundIt;
+			typename std::list<T_ConnectionType*>::iterator foundIt;
 			while ((foundIt = std::find_if(c.begin(), c.end(), isConnectionToThisNode))	!= c.end())
 			{
 				delete *foundIt;
@@ -459,7 +463,7 @@ namespace Elite
 	template<class T_NodeType, class T_ConnectionType>
 	inline float IGraph<T_NodeType, T_ConnectionType>::GetNodeRadius(T_NodeType* pNode) const
 	{
-		return DEFAULT_NODE_RADIUS;
+		return 0;
 	}
 
 	template<class T_NodeType, class T_ConnectionType>

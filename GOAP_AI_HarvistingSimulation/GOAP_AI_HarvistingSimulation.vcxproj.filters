@@ -80,5 +80,8 @@
     <ClInclude Include="Resources.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="StatesAndTransistions.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
