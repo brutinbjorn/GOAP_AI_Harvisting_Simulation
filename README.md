@@ -30,6 +30,7 @@ the planner  checks for a way to achieve the targeted goal. and then returns the
 Sources i used to create my little goap ai.
 
 GOAP explained by Jeff Orkin. IA Lead of the GOAP AI in multiple games (FEAR,Stalker,..)
-1: https://alumni.media.mit.edu/~jorkin/goap.html .th
+1: https://alumni.media.mit.edu/~jorkin/goap.html
+
 How AI in Games Works Written by Ben Hardwidge
 2:https://www.bit-tech.net/reviews/gaming/how-ai-in-games-works/3/
