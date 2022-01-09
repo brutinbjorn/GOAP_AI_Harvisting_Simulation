@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "EGraphNodeTypes.h"
-#include "GOAPAgent.h"
-#include "Resources.h"
+
+
 
 class LocationNode : public Elite::GraphNode
 {
@@ -20,10 +20,9 @@ private:
 	
 };
 
-class ResourceNode : public LocationNode
-{
-public:
-	ResourceNode(int idx): LocationNode(idx){}
-
-	bool GatherResource(GOAPAgent* m_Agent,Resource& NewResource){};
-};
+//class ResourceNode : public LocationNode
+//{
+//public:
+//	ResourceNode(int idx): LocationNode(idx){}
+//	bool GatherResource(GOAPAgent* ,ResourceNode& ){return false;};
+//};

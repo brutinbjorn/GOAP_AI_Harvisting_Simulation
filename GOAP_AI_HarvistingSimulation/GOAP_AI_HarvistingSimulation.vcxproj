@@ -142,23 +142,32 @@
     <ClCompile Include="EGraphConnectionTypes.cpp" />
     <ClCompile Include="EGraphNodeTypes.cpp" />
     <ClCompile Include="GOAPAgent.cpp" />
+    <ClCompile Include="GOAPInterface.cpp" />
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp" />
     <ClCompile Include="GOAP_Application.cpp" />
-    <ClCompile Include="GOAP_Planner.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Planner.cpp" />
     <ClCompile Include="LocationNode.cpp" />
     <ClCompile Include="Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EAStar.h" />
+    <ClInclude Include="EBFS.h" />
+    <ClInclude Include="EEularianPath.h" />
     <ClInclude Include="EGraphConnectionTypes.h" />
     <ClInclude Include="EGraphEnums.h" />
     <ClInclude Include="EGraphNodeTypes.h" />
+    <ClInclude Include="EHeuristicFunctions.h" />
     <ClInclude Include="EIGraph.h" />
+    <ClInclude Include="ENavigation.h" />
     <ClInclude Include="GOAPAgent.h" />
+    <ClInclude Include="GOAPInterface.h" />
     <ClInclude Include="GOAP_Application.h" />
-    <ClInclude Include="GOAP_Planner.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Planner.h" />
     <ClInclude Include="LocationNode.h" />
     <ClInclude Include="Resources.h" />
-    <ClInclude Include="StatesAndTransistions.h" />
+    <ClInclude Include="Actions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

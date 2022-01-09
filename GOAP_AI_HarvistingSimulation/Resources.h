@@ -2,7 +2,7 @@
 enum class ResourceType
 {
 	invalid = -1,
-
+	none	= 0,
 	wood	= 1,
 	stone	= 2,
 	coal	= 3,

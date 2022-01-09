@@ -25,15 +25,18 @@
     <Filter Include="Elite FrameWork\Graph">
       <UniqueIdentifier>{f541f7a3-da4b-4b62-8a0a-904ea986a3b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GOAP">
+      <UniqueIdentifier>{f373deca-237e-4ca0-bcd7-682ade021c00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GOAP\Planner">
+      <UniqueIdentifier>{e802b7d5-7e84-4e5a-9089-94519e1099bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elite FrameWork\EliteGraph">
+      <UniqueIdentifier>{8ec18806-3df0-4d05-b8ee-5abe4d600fac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GOAP_Planner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GOAPAgent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EGraphConnectionTypes.cpp">
@@ -45,20 +48,26 @@
     <ClCompile Include="GOAP_Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LocationNode.cpp">
-      <Filter>Elite FrameWork\Nodes</Filter>
-    </ClCompile>
     <ClCompile Include="Resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Planner.cpp">
+      <Filter>GOAP\Planner</Filter>
+    </ClCompile>
+    <ClCompile Include="LocationNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GOAPAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GOAPInterface.cpp">
+      <Filter>GOAP</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GOAP_Planner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GOAPAgent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EGraphConnectionTypes.h">
       <Filter>Elite FrameWork\Connection</Filter>
     </ClInclude>
@@ -71,16 +80,43 @@
     <ClInclude Include="EIGraph.h">
       <Filter>Elite FrameWork\Graph</Filter>
     </ClInclude>
-    <ClInclude Include="GOAP_Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LocationNode.h">
-      <Filter>Elite FrameWork\Nodes</Filter>
-    </ClInclude>
     <ClInclude Include="Resources.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="StatesAndTransistions.h">
+    <ClInclude Include="Planner.h">
+      <Filter>GOAP\Planner</Filter>
+    </ClInclude>
+    <ClInclude Include="GOAP_Application.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationNode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GOAPAgent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GOAPInterface.h">
+      <Filter>GOAP</Filter>
+    </ClInclude>
+    <ClInclude Include="EAStar.h">
+      <Filter>Elite FrameWork\EliteGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="EBFS.h">
+      <Filter>Elite FrameWork\EliteGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="EEularianPath.h">
+      <Filter>Elite FrameWork\EliteGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="ENavigation.h">
+      <Filter>Elite FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="EHeuristicFunctions.h">
+      <Filter>Elite FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions.h">
+      <Filter>GOAP</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
