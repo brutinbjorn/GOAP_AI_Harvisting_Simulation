@@ -16,8 +16,6 @@ ei: i can not tell it to MoveToRecource->harvest->ReturnToBase.
 only that it needs to earn points.
 
 
-Test to fix Account.
-
 What is GOAP?
 Goal Oriented Action Planning or GOAP, 
 looks a lot like FSM (finite state machine), 
@@ -29,9 +27,7 @@ sends this situation to a Planner, witch keeps al the states and actions.
 the planner  checks for a way to achieve the targeted goal. and then returns the plan to the controlled pawn.
 
 
-
-
-Sources
+Sources i used to create my little goap ai.
 
 GOAP explained by Jeff Orkin. IA Lead of the GOAP AI in multiple games (FEAR,Stalker,..)
 1: https://alumni.media.mit.edu/~jorkin/goap.html
