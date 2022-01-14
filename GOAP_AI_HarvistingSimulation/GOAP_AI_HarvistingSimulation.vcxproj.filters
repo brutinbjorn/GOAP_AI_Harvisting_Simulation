@@ -34,6 +34,21 @@
     <Filter Include="Elite FrameWork\EliteGraph">
       <UniqueIdentifier>{8ec18806-3df0-4d05-b8ee-5abe4d600fac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GOAP\Actions">
+      <UniqueIdentifier>{b8d392bd-7118-487a-a75d-067788b3d275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elite FrameWork\Math">
+      <UniqueIdentifier>{8742a374-4617-4635-a48a-6ca87841ce20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WorldLocations">
+      <UniqueIdentifier>{083b9488-5c0f-4ddf-bec1-b0a2bd85b3b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FSM">
+      <UniqueIdentifier>{6daaaadc-4c8c-42d5-9697-3b93a1d15cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FSM\States">
+      <UniqueIdentifier>{c275207e-ff55-4c0b-8e1a-0a42e4c011f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp">
@@ -54,17 +69,32 @@
     <ClCompile Include="Planner.cpp">
       <Filter>GOAP\Planner</Filter>
     </ClCompile>
-    <ClCompile Include="LocationNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GOAPAgent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GOAPInterface.cpp">
       <Filter>GOAP</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GOAPAgent.cpp">
+      <Filter>GOAP</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EliteMath\EMatrix2x3.cpp">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceSpot.cpp">
+      <Filter>Source Files\WorldLocations</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSpot.cpp">
+      <Filter>Source Files\WorldLocations</Filter>
+    </ClCompile>
+    <ClCompile Include="DropOffCoalAction.cpp">
+      <Filter>GOAP\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="EFiniteStateMachine.cpp">
+      <Filter>Elite FrameWork</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,12 +119,6 @@
     <ClInclude Include="GOAP_Application.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="LocationNode.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GOAPAgent.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="GOAPInterface.h">
       <Filter>GOAP</Filter>
     </ClInclude>
@@ -113,11 +137,70 @@
     <ClInclude Include="EHeuristicFunctions.h">
       <Filter>Elite FrameWork</Filter>
     </ClInclude>
-    <ClInclude Include="Actions.h">
-      <Filter>GOAP</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="MineCoalAction.h">
+      <Filter>GOAP\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions.h">
+      <Filter>GOAP\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="GOAPAgent.h">
+      <Filter>GOAP</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\EMat22.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\FMatrix.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\EVector3.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\EVector2.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\EMatrix2x3.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\EMathUtilities.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EliteMath\EMath.h">
+      <Filter>Elite FrameWork\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceSpot.h">
+      <Filter>Source Files\WorldLocations</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSpot.h">
+      <Filter>Source Files\WorldLocations</Filter>
+    </ClInclude>
+    <ClInclude Include="DropOffCoalAction.h">
+      <Filter>GOAP\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="EFiniteStateMachine.h">
+      <Filter>Elite FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="EBlackboard.h">
+      <Filter>Elite FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="EDecisionMaking.h">
+      <Filter>Elite FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StatesAndTranstions.h">
+      <Filter>FSM\States</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GOAP_AI_HarvistingSimulation.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

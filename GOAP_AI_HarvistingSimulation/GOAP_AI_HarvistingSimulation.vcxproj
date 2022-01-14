@@ -139,35 +139,59 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseSpot.cpp" />
+    <ClCompile Include="DropOffCoalAction.cpp" />
+    <ClCompile Include="EFiniteStateMachine.cpp" />
     <ClCompile Include="EGraphConnectionTypes.cpp" />
     <ClCompile Include="EGraphNodeTypes.cpp" />
+    <ClCompile Include="EliteMath\EMatrix2x3.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GOAPAgent.cpp" />
     <ClCompile Include="GOAPInterface.cpp" />
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp" />
     <ClCompile Include="GOAP_Application.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Planner.cpp" />
-    <ClCompile Include="LocationNode.cpp" />
     <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="ResourceSpot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseSpot.h" />
+    <ClInclude Include="DropOffCoalAction.h" />
     <ClInclude Include="EAStar.h" />
     <ClInclude Include="EBFS.h" />
+    <ClInclude Include="EBlackboard.h" />
+    <ClInclude Include="EDecisionMaking.h" />
     <ClInclude Include="EEularianPath.h" />
+    <ClInclude Include="EFiniteStateMachine.h" />
     <ClInclude Include="EGraphConnectionTypes.h" />
     <ClInclude Include="EGraphEnums.h" />
     <ClInclude Include="EGraphNodeTypes.h" />
     <ClInclude Include="EHeuristicFunctions.h" />
     <ClInclude Include="EIGraph.h" />
+    <ClInclude Include="EliteMath\EMat22.h" />
+    <ClInclude Include="EliteMath\EMath.h" />
+    <ClInclude Include="EliteMath\EMathUtilities.h" />
+    <ClInclude Include="EliteMath\EMatrix2x3.h" />
+    <ClInclude Include="EliteMath\EVector2.h" />
+    <ClInclude Include="EliteMath\EVector3.h" />
+    <ClInclude Include="EliteMath\FMatrix.h" />
     <ClInclude Include="ENavigation.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GOAPAgent.h" />
     <ClInclude Include="GOAPInterface.h" />
     <ClInclude Include="GOAP_Application.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="MineCoalAction.h" />
     <ClInclude Include="Planner.h" />
-    <ClInclude Include="LocationNode.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Actions.h" />
+    <ClInclude Include="ResourceSpot.h" />
+    <ClInclude Include="StatesAndTranstions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GOAP_AI_HarvistingSimulation.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

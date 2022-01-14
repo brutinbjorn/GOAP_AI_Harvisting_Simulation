@@ -3,7 +3,8 @@
 #include <map>
 #include <string>
 
-#include "LocationNode.h"
+#include "GameObject.h"
+
 
 //------------
 //0
@@ -13,6 +14,9 @@
 //---STATES---
 //------------
 
+#include <iostream>
+
+#include "GOAPAgent.h"
 
 class Action
 {
@@ -25,9 +29,10 @@ public:
 		m_InRange = false;
 	}
 
-	virtual bool IsDone() = 0;
-	virtual bool Perform() = 0;
-	virtual bool RequiresInRange() = 0;
+	virtual bool IsDone() {return false;};
+	virtual bool Perform(GOAPAgent* , float ) { return false;};
+	virtual bool RequiresInRange() {return false;};
+	virtual void SetInRange(bool InRange = false) { m_InRange = InRange; };
 	virtual bool IsInRange() { return m_InRange; };
 
 	void AddPrecondition(std::string key, bool val)
@@ -46,6 +51,8 @@ public:
 		return false;
 	}
 
+	std::map<std::string, bool> GetPreconditions() const { return m_Preconditions; };
+	
 	void AddEffect(std::string key, bool val)
 	{
 		m_Effects[key] = val;
@@ -62,14 +69,23 @@ public:
 		return false;
 	}
 
-	LocationNode* GetTarget() { return m_pTarget; };
+	std::map<std::string, bool> GetEffects() const { return m_Effects; };
+	
+	float GetCost() { return m_Cost; };
+
+	virtual bool CheckProceduralPrecondition(GOAPAgent* pAgent, std::vector<GameObject*>* WorldObjects)= 0;
+	
+	GameObject* GetTarget() const { return m_pTarget; };
+
+	virtual void PrintActionType() { std::cout << "empty action, "; };
+	
 
 protected:
 	std::map<std::string, bool> m_Preconditions{};
 	std::map<std::string, bool> m_Effects{};
 	float m_Cost = 1.f;
 	bool m_InRange = false;
-	LocationNode* m_pTarget = nullptr;
+	GameObject* m_pTarget = nullptr;
 };
 
 
