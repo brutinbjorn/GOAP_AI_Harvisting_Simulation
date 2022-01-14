@@ -34,3 +34,7 @@ GOAP explained by Jeff Orkin. IA Lead of the GOAP AI in multiple games (FEAR,Sta
 
 How AI in Games Works Written by Ben Hardwidge
 2:https://www.bit-tech.net/reviews/gaming/how-ai-in-games-works/3/
+
+Goal Oriented Action Planning for a Smarter AI for Unity written by Brent Owens.
+Reading his Unity Example to get started, and for bringing me on the Idea
+3:https://gamedevelopment.tutsplus.com/tutorials/goal-oriented-action-planning-for-a-smarter-ai--cms-20793
