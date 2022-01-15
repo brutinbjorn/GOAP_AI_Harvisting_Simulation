@@ -8,12 +8,14 @@
 #ifndef ELITE_FINITE_STATE_MACHINE
 #define ELITE_FINITE_STATE_MACHINE
 #include <map>
+#include <vector>
 
-#include "EBlackboard.h"
 #include "EDecisionMaking.h"
 
 namespace Elite
 {
+	class Blackboard;
+
 	class FSMState
 	{
 	public:

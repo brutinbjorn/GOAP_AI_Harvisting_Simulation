@@ -13,13 +13,15 @@ public:
 		AddEffect("collectOre", true); // we collected ore
 	}
 
+
+	
 	void Reset() override
 	{
-		DroppedOffOre = false;
+		m_DroppedOffOre = false;
 		m_Base = nullptr;
 	};
 
-	bool IsDone() override { return DroppedOffOre; };
+	bool IsDone() override { return m_DroppedOffOre; };
 
 	bool RequiresInRange() override{return true;};
 
@@ -54,11 +56,30 @@ public:
 		return m_Base != nullptr;
 	};
 
-	void PrintActionType() override { std::cout << "DropOffCoalAction, "; };
+	void PrintActionType() override { std::cout << "DropOffCoalAction, "; }
+	~DropOffCoalAction() override = default;
+	
+	bool Perform(GOAPAgent* pAgent, float dt) override
+	{
+		m_ElapsedDropOffTime += dt;
+
+		if(m_ElapsedDropOffTime > m_DropOffDuration)
+		{
+			m_Base->DropOffResources(pAgent);
+			m_DroppedOffOre = true;
+		}
+		return true;
+	}
+	
+	//void SetInRange(bool InRange) override;
+	//bool IsInRange() override;;
 	
 private:
 	BaseSpot* m_Base = nullptr;
-	bool DroppedOffOre = false;
+	bool m_DroppedOffOre = false;
+
+	float m_DropOffDuration = 1.f;
+	float m_ElapsedDropOffTime = 0.f;
  
 };
 

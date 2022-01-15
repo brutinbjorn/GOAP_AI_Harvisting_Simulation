@@ -16,7 +16,7 @@ class Node
 		Node(){};
 		Node(Node* parent, float cost, std::map<std::string, bool> state, Action* action)
 			: m_Parent(parent), m_RunningCost(cost), m_State(state), m_Action(action) {};
-		~Node() = default;;
+		~Node() = default;
 		Node* m_Parent = nullptr;
 		float m_RunningCost = 0.f;
 		std::map<std::string, bool> m_State{};
@@ -25,7 +25,7 @@ class Node
 
 public:
 	Planner(std::vector<GameObject*>* WorldObjects) : m_worldObjects(WorldObjects){};
-	~Planner() = default;
+	~Planner() = default;;
 	
 	std::vector<Action*> plan(GOAPAgent* agent,
 		std::map<std::string, bool> goal);

@@ -27,11 +27,17 @@ GOAPAgent::GOAPAgent(Elite::Vector2 startPos)
 GOAPAgent::~GOAPAgent()
 {
 	//SAFE_DELETE(m_pPlanner);
-	if (m_pPlanner)
-		delete m_pPlanner;
-	m_pPlanner = nullptr;
-	
 	SAFE_DELETE(m_pDesicionMaking);
+
+	//if (m_pPlanner)
+	//	delete m_pPlanner;
+	//m_pPlanner = nullptr;
+
+	for (int i = 0; i < m_pAvailableActions.size(); i++)
+	{
+		SAFE_DELETE(m_pAvailableActions[i]);
+	}
+	
 }
 
 std::map<std::string, bool> GOAPAgent::GetWorldState()
@@ -63,6 +69,11 @@ void GOAPAgent::PlanFound(std::map<std::string, bool> goal, std::vector<Action*>
 void GOAPAgent::ActionsFinished()
 {
 	std::cout << "GOAP Plan Finished" << std::endl;
+}
+
+void GOAPAgent::Update(float dt)
+{
+	m_pDesicionMaking->Update(dt);
 }
 
 void GOAPAgent::SetPlanner(Planner* newPlanner)

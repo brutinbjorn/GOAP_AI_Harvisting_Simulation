@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "GOAP_Application.h"
-
+#include "vld.h"
 
 
 int main()
@@ -27,6 +27,8 @@ int main()
     	
     }
     while (ch != 'x');
+
+    delete m_pApplictation;
 
 }
 

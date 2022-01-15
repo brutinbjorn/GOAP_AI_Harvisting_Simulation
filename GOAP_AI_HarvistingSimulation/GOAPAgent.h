@@ -26,17 +26,20 @@ public:
 	std::map<std::string, bool> GetWorldState() override;
 	std::map<std::string, bool> CreateGoalState() override;
 
-	void AddAction(Action* m_pAction) { m_AvailableActions.push_back(m_pAction); };
-	std::vector<Action*> GetAllActions() const { return m_AvailableActions; };
+	void AddAction(Action* m_pAction) { m_pAvailableActions.push_back(m_pAction); };
+	std::vector<Action*> GetAllActions() const { return m_pAvailableActions; };
 
 	void SetActionPlan(std::vector<Action*> ActionsToDo) { m_CurrentActions = ActionsToDo; };
 	bool HasAPlan() { return !m_CurrentActions.empty(); }
+	std::vector<Action*> GetCurrentPlan() { return  m_CurrentActions; };
 	
 	void PlanFailed(std::map<std::string, bool> failedGoal) override {};
 	void PlanFound(std::map<std::string, bool> goal, std::vector<Action*> actions) override;
 	void PlanAborted(Action* aborter) override;
 	
 	void ActionsFinished() override;
+
+	void Update(float dt);
 
 	void SetDicisionMaking(Elite::FiniteStateMachine* FSM) { m_pDesicionMaking = FSM; };
 	void SetPlanner(Planner* newPlanner);
@@ -55,7 +58,7 @@ private:
 	float m_MoveSpeed = 5.f;
 	Planner* m_pPlanner = nullptr;
 	
-	std::vector<Action*> m_AvailableActions;
+	std::vector<Action*> m_pAvailableActions;
 	std::vector<Action*> m_CurrentActions;
 	
 };

@@ -1,14 +1,16 @@
 #pragma once
 #include <iostream>
 
+
+#include "Actions.h"
 #include "EFiniteStateMachine.h"
 #include "GOAPAgent.h"
 #include "EliteMath/EVector2.h"
 
-class SeekState : public Elite::FSMState
+class MoveState : public Elite::FSMState
 {
 public:
-	SeekState() : FSMState() {};
+	MoveState() : FSMState() {};
 	virtual void OnEnter(Elite::Blackboard* pBlackboard) override
 	{
 		GOAPAgent* pAgent = nullptr;
@@ -17,7 +19,19 @@ public:
 		Elite::Vector2* target = nullptr;
 		pBlackboard->GetData("MoveToTarget", target);
 
-		if (!pAgent) return;
+		if (!pAgent || !target) 
+			return;
+
+		std::vector<Action*> plan = pAgent->GetCurrentPlan();
+
+		GameObject* object = plan[0]->GetTarget();
+		if(plan[0]->RequiresInRange() && object != nullptr)
+		{
+			(*target) = object->GetPosition();
+			
+		}
+		
+		
 	}
 };
 
@@ -25,7 +39,10 @@ class IdleState : public  Elite::FSMState
 {
 public:
 	IdleState() : FSMState() {};
-	void OnEnter(Elite::Blackboard* pBlackboard) override
+	//void OnEnter(Elite::Blackboard* pBlackboard) override
+	//{
+	//}
+	void Update(Elite::Blackboard* pBlackboard, float deltaTime) override
 	{
 		GOAPAgent* pAgent = nullptr;
 		pBlackboard->GetData("Agent", pAgent);
@@ -49,7 +66,7 @@ public:
 			pAgent->SetActionPlan(actionPlan);
 			pAgent->PlanFound(pAgent->CreateGoalState(), actionPlan);
 		}
-			
+		
 	}
 };
 
@@ -61,6 +78,15 @@ public:
 	{
 		GOAPAgent* pAgent = nullptr;
 		pBlackboard->GetData("Agent", pAgent);
+		if (!pAgent)
+			return;
+
+		std::vector<Action*> plan = pAgent->GetCurrentPlan();
+		Action* currentAction = plan.front();
+		if(currentAction->IsDone())
+		{
+			//std::vector<Action*>
+		}
 	}
 	
 };
@@ -75,8 +101,19 @@ class HasAPlan : public Elite::FSMTransition
 			return false;
 
 		return pAgent->HasAPlan();
-		
-		
+	
 	}
 };
 
+class HasNoPlan : public Elite::FSMTransition
+{
+	bool ToTransition(Elite::Blackboard* pBlackboard) const override
+	{
+		GOAPAgent* pAgent = nullptr;
+		pBlackboard->GetData("Agent", pAgent);
+		if (!pAgent)
+			return false;
+
+		return pAgent->HasAPlan();
+	}
+};

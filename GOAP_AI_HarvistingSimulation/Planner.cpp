@@ -39,6 +39,8 @@ std::vector<Action*> Planner::plan(GOAPAgent* agent,
 	//change the world state until we find one we want to go down
 	//
 	Node start = Node(nullptr, 0, worldState, nullptr);
+
+	// mineORe is in the first node, collectOre is in the second
 	bool succes = BuildGraph(start,leaves,UsableActions,goal);
 
 	if(!succes)
@@ -49,6 +51,8 @@ std::vector<Action*> Planner::plan(GOAPAgent* agent,
 	}
 
 	// get the cheapest leaf
+
+	
 	Node cheapest = leaves[0];
 	for (auto leaf : leaves)
 	{
@@ -58,7 +62,11 @@ std::vector<Action*> Planner::plan(GOAPAgent* agent,
 
 	// get its node and work back through parents, resulting in a list of actions,
 	// pointers still looking to agent->actions;
+
+	
 	std::list<Action*> result;
+
+	// extract the actions out off the nodes
 	Node* n = &cheapest;
 	while (n != nullptr)
 	{
@@ -102,6 +110,9 @@ bool Planner::inState(std::map<std::string, bool> test, std::map<std::string, bo
 bool Planner::BuildGraph(Node Parent, std::vector<Node> leaves, std::vector<Action*> usableActions,
                          std::map<std::string, bool> goal)
 {
+
+	// example plan: collect ore == do mineOre->CollectOre
+	// mineORe is in the first node, collectOre is in the second
 	bool foundOne = false;
 	for (auto* action : usableActions)
 	{

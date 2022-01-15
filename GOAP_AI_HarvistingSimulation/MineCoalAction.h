@@ -73,6 +73,8 @@ public:
 
 	void PrintActionType() override { std::cout << "mineCoalAction, "; };
 
+
+	void SetresourceSpot(ResourceSpot* pResource) { m_pResourceSpot = pResource; };
 private:
 	bool m_mined = false;
 	ResourceSpot* m_pResourceSpot = nullptr;
