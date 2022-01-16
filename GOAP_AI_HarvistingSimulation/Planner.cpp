@@ -6,7 +6,7 @@
 #include "Actions.h"
 
 
-std::vector<Action*> Planner::plan(GOAPAgent* agent, 
+std::list<Action*> Planner::plan(GOAPAgent* agent, 
     std::map<std::string, bool> goal)
 {
 	// get all possible actions the agent can perform
@@ -32,31 +32,35 @@ std::vector<Action*> Planner::plan(GOAPAgent* agent,
 	}
 
 	// list of linked actions with a pointer to parent and action
-	std::vector<Node> leaves;
+	std::vector<Node*> leaves;
 
 	//build Graph
 	// create a top down chain graph of all actions that perputally
 	//change the world state until we find one we want to go down
 	//
-	Node start = Node(nullptr, 0, worldState, nullptr);
+	Node* start = new Node(nullptr, 0, worldState, nullptr);
 
+	m_Nodes.push_back(start);
 	// mineORe is in the first node, collectOre is in the second
 	bool succes = BuildGraph(start,leaves,UsableActions,goal);
-
+	
 	if(!succes)
 	{
 		// no plan.
 		std::cout << "NO PLAN" << std::endl;
-		return std::vector<Action*>{};
+		for (int i = 0; i < m_Nodes.size(); i++)
+			delete m_Nodes[i];
+
+		return std::list<Action*>{};
 	}
 
 	// get the cheapest leaf
 
 	
-	Node cheapest = leaves[0];
+	Node* cheapest = leaves[0];
 	for (auto leaf : leaves)
 	{
-		if (leaf.m_RunningCost < cheapest.m_RunningCost)
+		if (leaf->m_RunningCost < cheapest->m_RunningCost)
 			cheapest = leaf;
 	}
 
@@ -67,7 +71,7 @@ std::vector<Action*> Planner::plan(GOAPAgent* agent,
 	std::list<Action*> result;
 
 	// extract the actions out off the nodes
-	Node* n = &cheapest;
+	Node* n = cheapest;
 	while (n != nullptr)
 	{
 		if(n->m_Action != nullptr)
@@ -76,13 +80,18 @@ std::vector<Action*> Planner::plan(GOAPAgent* agent,
 	}
 
 	
+	for (int i = 0; i < m_Nodes.size(); ++i)
+		delete m_Nodes[i];
+
+	m_Nodes.clear();
+	
 	std::vector<Action*> toReturn;
 	for (auto value : result)
 	{
 		toReturn.push_back(value);
 	}
 
-	return toReturn;
+	return result;
 	
 }
 
@@ -107,7 +116,7 @@ bool Planner::inState(std::map<std::string, bool> test, std::map<std::string, bo
 	return AllMatchesFound;
 }
 
-bool Planner::BuildGraph(Node Parent, std::vector<Node> leaves, std::vector<Action*> usableActions,
+bool Planner::BuildGraph(Node* Parent, std::vector<Node*>& leaves, std::vector<Action*> usableActions,
                          std::map<std::string, bool> goal)
 {
 
@@ -118,14 +127,15 @@ bool Planner::BuildGraph(Node Parent, std::vector<Node> leaves, std::vector<Acti
 	{
 
 		//checks if the requirements are fufilled in the parent state
-		if(inState(action->GetPreconditions(),Parent.m_State))
+		if(inState(action->GetPreconditions(),Parent->m_State))
 		{
 
 			// fufill the effect changes
-			std::map<std::string, bool> currentState = PopulateState(Parent.m_State, action->GetEffects());
+			std::map<std::string, bool> currentState = PopulateState(Parent->m_State, action->GetEffects());
 
-			Node node =  Node(&Parent, Parent.m_RunningCost + action->GetCost(), currentState, action);
+			Node *node = new Node(Parent, Parent->m_RunningCost + action->GetCost(), currentState, action);
 
+			m_Nodes.push_back(node);
 			//check if the goal is fufilled.
 			if(inState(goal,currentState))
 			{
@@ -141,7 +151,10 @@ bool Planner::BuildGraph(Node Parent, std::vector<Node> leaves, std::vector<Acti
 				// restart with copy, going until we went true all possible actions.
 				bool found = BuildGraph(node, leaves, subset, goal);
 				if (found)
+				{
+				//	leaves.push_back(node);
 					foundOne = true;
+				}
 			}
 		}
 	}

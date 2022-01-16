@@ -7,29 +7,27 @@
 class BaseSpot : public GameObject
 {
 public:
-	BaseSpot(const Elite::Vector2& pos, float Radius)
-		: GameObject(pos), m_Radius(Radius)
-	{
-	}
+	BaseSpot(const Elite::Vector2& pos, float Radius) :
+	GameObject(pos), m_Radius(Radius) {};
 
-	void DropOffResources(GOAPAgent* pAgent)
+	virtual void DropOffResources(GOAPAgent* pAgent)
 	{
 		auto& resources = pAgent->GetRefInventory().m_Resources;
 
 		int pointsGained = 0;
 
 		
-		for (int i = 0; resources.size(); i++)
+		for (int i = 0; i < resources.size(); i++)
 		{
 			resources[i];
 			pointsGained++;
 		}
 		resources.clear();
-		std::cout << "points gained for dropped off:" << pointsGained << std::endl;
+		std::cout << "points gained for dropped off: " << pointsGained << std::endl;
 
 		m_CollectedScore += pointsGained;
 
-		std::cout << "Total score now" << m_CollectedScore << std::endl;
+		std::cout << "Total score now: " << m_CollectedScore << std::endl;
 		
 	}
 

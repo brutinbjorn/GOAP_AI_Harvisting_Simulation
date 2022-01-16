@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include <map>
 #include <string>
 #include <vector>
@@ -17,7 +18,7 @@ public:
 	virtual std::map<std::string,bool> CreateGoalState() = 0;
 
 	virtual void PlanFailed(std::map<std::string,bool> failedGoal) = 0;
-	virtual void PlanFound(std::map<std::string, bool> goal, std::vector<Action*> actions) = 0;
+	virtual void PlanFound(std::map<std::string, bool> goal, std::list<Action*> actions) = 0;
 
 	virtual void ActionsFinished() = 0;
 	virtual void PlanAborted(Action* aborter) = 0;

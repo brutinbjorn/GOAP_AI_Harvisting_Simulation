@@ -26,12 +26,9 @@ GOAPAgent::GOAPAgent(Elite::Vector2 startPos)
 
 GOAPAgent::~GOAPAgent()
 {
-	//SAFE_DELETE(m_pPlanner);
+	
 	SAFE_DELETE(m_pDesicionMaking);
 
-	//if (m_pPlanner)
-	//	delete m_pPlanner;
-	//m_pPlanner = nullptr;
 
 	for (int i = 0; i < m_pAvailableActions.size(); i++)
 	{
@@ -57,13 +54,14 @@ std::map<std::string, bool> GOAPAgent::CreateGoalState()
 	
 }
 
-void GOAPAgent::PlanFound(std::map<std::string, bool> goal, std::vector<Action*> actions)
+void GOAPAgent::PlanFound(std::map<std::string, bool> goal, std::list<Action*> actions)
 {
 	std::cout << "GOAP Plan Found" << std::endl;
 	for (auto action : actions)
 	{
 		action->PrintActionType();
 	}
+	std::cout << std::endl;
 }
 
 void GOAPAgent::ActionsFinished()
@@ -94,6 +92,9 @@ bool GOAPAgent::MoveAgent(Action* nextAction,float dt)
 
 	Elite::Vector2 towards = target - m_pos;
 	m_pos += Elite::GetNormalized(towards) * m_MoveSpeed * dt;
+	
+	std::cout << "Goap agent position =:" << m_pos << std::endl;
+	
 	if(Elite::Distance(target,m_pos) < 1.f)
 	{
 		nextAction->SetInRange(true);

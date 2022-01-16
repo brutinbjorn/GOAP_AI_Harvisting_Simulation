@@ -5,13 +5,14 @@
 class GameObject
 {
 public:
-	GameObject() = default;;
+	GameObject() = default;
 	GameObject(Elite::Vector2 pos)
 	:m_pos(pos){};
-	~GameObject() = default;
+	
+	virtual ~GameObject() = default;
 
-	void SetPosition(Elite::Vector2 pos) { m_pos = pos; };
-	Elite::Vector2 GetPosition() const { return m_pos; };
+	virtual void SetPosition(Elite::Vector2 pos) { m_pos = pos; };
+	virtual Elite::Vector2 GetPosition() const { return m_pos; };
 
 protected:
 	Elite::Vector2 m_pos;

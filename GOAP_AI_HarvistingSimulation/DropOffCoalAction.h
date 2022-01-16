@@ -8,9 +8,9 @@ class DropOffCoalAction :
 {
 public:
 	DropOffCoalAction() {
-		AddPrecondition("hasOre", true); // can't drop off ore if we don't already have some
-		AddEffect("hasOre", false); // we now have no ore
-		AddEffect("collectOre", true); // we collected ore
+		AddPrecondition("HasOre", true); // can't drop off ore if we don't already have some
+		AddEffect("HasOre", false); // we now have no ore
+		AddEffect("CollectOre", true); // we collected ore
 	}
 
 
@@ -18,7 +18,7 @@ public:
 	void Reset() override
 	{
 		m_DroppedOffOre = false;
-		m_Base = nullptr;
+		//m_pBase = nullptr;
 	};
 
 	bool IsDone() override { return m_DroppedOffOre; };
@@ -31,7 +31,7 @@ public:
 		float ClosestDistance = 0.f;
 		for (GameObject* ob : (*WorldObjects))
 		{
-			BaseSpot* rSpot = static_cast<BaseSpot*>(ob);
+			BaseSpot* rSpot = dynamic_cast<BaseSpot*>(ob);
 			if (rSpot)
 			{
 				if (closest == nullptr)
@@ -50,10 +50,10 @@ public:
 				}
 			}
 		}
-		m_Base = closest;
+		m_pBase = closest;
 		m_pTarget = closest;
 
-		return m_Base != nullptr;
+		return m_pBase != nullptr;
 	};
 
 	void PrintActionType() override { std::cout << "DropOffCoalAction, "; }
@@ -63,19 +63,24 @@ public:
 	{
 		m_ElapsedDropOffTime += dt;
 
+		std::cout << "mining..." << std::endl;
+		
 		if(m_ElapsedDropOffTime > m_DropOffDuration)
 		{
-			m_Base->DropOffResources(pAgent);
+			m_pBase->DropOffResources(pAgent);
 			m_DroppedOffOre = true;
+
+			std::cout << "Dropped of ore" << std::endl;
 		}
 		return true;
 	}
-	
+
+	void SetBaseSpot(BaseSpot* pBaseSpot) { m_pBase = pBaseSpot; }
 	//void SetInRange(bool InRange) override;
 	//bool IsInRange() override;;
 	
 private:
-	BaseSpot* m_Base = nullptr;
+	BaseSpot* m_pBase = nullptr;
 	bool m_DroppedOffOre = false;
 
 	float m_DropOffDuration = 1.f;

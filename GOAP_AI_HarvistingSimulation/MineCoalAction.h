@@ -18,8 +18,8 @@ public:
 	{
 		m_mined = false;
 		m_ElapsedMineTime = 0.f;
-		if (m_pTarget)
-			delete m_pTarget;
+		//if (m_pTarget)
+		//	delete m_pTarget;
 	};
 
 	bool IsDone() override { return m_mined; };
@@ -32,7 +32,7 @@ public:
 		float ClosestDistance = 0.f;
 		for (GameObject* ob :*world)
 		{
-			ResourceSpot* rSpot = static_cast<ResourceSpot*>(ob);
+			ResourceSpot* rSpot = dynamic_cast<ResourceSpot*>(ob);
 			if(rSpot)
 			{
 				if (closest == nullptr)
@@ -51,6 +51,7 @@ public:
 				}
 			}	
 		}
+
 		m_pResourceSpot = closest;
 		m_pTarget = closest;
 
@@ -64,6 +65,7 @@ public:
 
 		if(m_ElapsedMineTime > m_MineDuration)
 		{
+			std::cout << "mining done" << std::endl;
 			pAgent->GetRefInventory().m_Resources.emplace_back(ResourceType::coal) ;
 			m_mined = true;
 			
@@ -74,7 +76,7 @@ public:
 	void PrintActionType() override { std::cout << "mineCoalAction, "; };
 
 
-	void SetresourceSpot(ResourceSpot* pResource) { m_pResourceSpot = pResource; };
+	void SetResourceSpot(ResourceSpot* pResource) { m_pResourceSpot = pResource; };
 private:
 	bool m_mined = false;
 	ResourceSpot* m_pResourceSpot = nullptr;

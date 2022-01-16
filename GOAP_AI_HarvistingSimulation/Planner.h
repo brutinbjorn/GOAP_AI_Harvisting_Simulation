@@ -27,13 +27,13 @@ public:
 	Planner(std::vector<GameObject*>* WorldObjects) : m_worldObjects(WorldObjects){};
 	~Planner() = default;;
 	
-	std::vector<Action*> plan(GOAPAgent* agent,
+	std::list<Action*> plan(GOAPAgent* agent,
 		std::map<std::string, bool> goal);
 
 		//virtual bool AddPlan(GOAPAgent* pAgent, std::map<std::string, bool> WorldState) = 0;
 private:
 	bool inState(std::map<std::string, bool> test, std::map<std::string, bool> states);
-	bool BuildGraph(Node Parent,std::vector<Node> leaves,std::vector<Action*> usableActions, std::map<std::string,bool> goal);
+	bool BuildGraph(Node* Parent,std::vector<Node*>& leaves,std::vector<Action*> usableActions, std::map<std::string,bool> goal);
 	std::vector<Action*> ActionSubset(std::vector<Action*> actions, Action* removeMe);
 	
 	static std::map<std::string, bool> PopulateState(
@@ -42,7 +42,7 @@ private:
 	
 	std::vector<GameObject*>* m_worldObjects = nullptr;
 
-
+	std::vector<Node*> m_Nodes;
 
 };
 	

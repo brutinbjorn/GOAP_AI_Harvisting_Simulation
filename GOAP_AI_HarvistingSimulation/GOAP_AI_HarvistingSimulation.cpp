@@ -4,7 +4,7 @@
 #include <iostream>
 #include "GOAP_Application.h"
 #include "vld.h"
-
+#include <string>
 
 int main()
 {
@@ -13,20 +13,34 @@ int main()
 	
 	m_pApplictation->Start();
     std::string input;
-    char ch;
+    std::string ch;
     do
     {
         ch = std::cin.get();
-    	
-        if(ch != 'x')
+
+    	int turnsToTake = 0;
+        try
         {
-			std::cout << "1 run" << std::endl;
-            m_pApplictation->Update(1.f);
+            turnsToTake = std::stoi(ch);
+        }
+        catch (std::invalid_argument a)
+        {
+            std::cout << "invalid input, type a number for seconds to pass, \n or x to close the program ";
+        }
+
+        if (ch[0] != 'x' && turnsToTake < 0);
+        {
+
+            for (int i = 0; i < turnsToTake * 4; i++)
+            {
+				std::cout << "0,25 seconds" << std::endl;
+				m_pApplictation->Update(0.25f);
+            }
         }
 
     	
     }
-    while (ch != 'x');
+    while (ch[0] != 'x');
 
     delete m_pApplictation;
 

@@ -29,12 +29,12 @@ public:
 	void AddAction(Action* m_pAction) { m_pAvailableActions.push_back(m_pAction); };
 	std::vector<Action*> GetAllActions() const { return m_pAvailableActions; };
 
-	void SetActionPlan(std::vector<Action*> ActionsToDo) { m_CurrentActions = ActionsToDo; };
+	void SetActionPlan(std::list<Action*> ActionsToDo) { m_CurrentActions = ActionsToDo; };
 	bool HasAPlan() { return !m_CurrentActions.empty(); }
-	std::vector<Action*> GetCurrentPlan() { return  m_CurrentActions; };
+	std::list<Action*>& GetCurrentPlan() { return  m_CurrentActions; };
 	
 	void PlanFailed(std::map<std::string, bool> failedGoal) override {};
-	void PlanFound(std::map<std::string, bool> goal, std::vector<Action*> actions) override;
+	void PlanFound(std::map<std::string, bool> goal, std::list<Action*> actions) override;
 	void PlanAborted(Action* aborter) override;
 	
 	void ActionsFinished() override;
@@ -55,11 +55,11 @@ private:
 
 	Elite::IDecisionMaking* m_pDesicionMaking = nullptr;
 	
-	float m_MoveSpeed = 5.f;
+	float m_MoveSpeed = 15.f;
 	Planner* m_pPlanner = nullptr;
 	
 	std::vector<Action*> m_pAvailableActions;
-	std::vector<Action*> m_CurrentActions;
+	std::list<Action*> m_CurrentActions;
 	
 };
 

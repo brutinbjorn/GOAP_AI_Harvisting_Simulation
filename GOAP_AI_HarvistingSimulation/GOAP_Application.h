@@ -21,7 +21,10 @@ public:
 private:
 	GOAPAgent* m_pAgent = nullptr;
 	Planner* m_pPlanner = nullptr;
-	
+
+	bool m_AgentInRange = false;
+	bool m_AgentDoingAction = false;
+	bool m_AgentHasAPlan = false;
 	
 	std::vector<GameObject*> m_WorldObjects;
 	std::vector<Elite::FSMState*> m_pStates;
