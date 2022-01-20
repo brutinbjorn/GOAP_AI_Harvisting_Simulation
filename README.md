@@ -1,13 +1,13 @@
 # GOAP_AI_Harvisting_Simulation
-personal research project into the working of the GOAP AI structure.
+Personal research project into the working of the GOAP AI structure.
 
-the goal of this little project of mine is to write a AI that can determine what neccesary steps need to be taken,
-without me as developer telling what the order of the steps is. simulating this is the terminal. 
+The goal of this little project of mine is to write a AI that can determine what neccesary steps need to be taken,
+Without me as developer telling what the order of the steps is. Simulating this is in the terminal. 
 the AI should be able to tell me the steps it takes in a logical order to achieve its goal, that does not conflict with the restrictions i give it.
 this will be done by using Goal Oriented Action Planning.
 
 the Goal will be to earn a X amount of points in as little amount of steps.
-points will be earned by "harvesting resources"(think of a game like factorio).th
+points will be earned by "harvesting resources" (think of a game like factorio).
 a step would be for example to: move to resource spot, harvest, return to base, craft. etc.
 
 however i am not allowed to tell witch step the AI should take in a certian order.
@@ -15,25 +15,21 @@ ei: i can not tell it to MoveToRecource->harvest->ReturnToBase.
 only that it needs to earn points.
 
 
-
 Changes i made to along the way:
 Originaly i wanted th GOAP Agent to teleport along a nodegraph, but changed this to just working with Objects that are placed in a 2D plane (x,y pos).
-i found this easyer in relationship to the FSM of tha AI, and makes it more easier to use this code in a differnet project.
+I found this easier in relationship to the FSM of the AI, and makes it more easier to use this code in a different project.
 if the GOAP agent started teleporting then the whole state of moving to became a bit invalid.
-
-
 
 
 What is GOAP?
 Goal Oriented Action Planning or GOAP, 
-looks a lot like FSM (finite state machine), 
-with the diffrence being that there are no preset transitions between the different states/actions.
+looks a bit like FSM (finite state machine), and needs a base FSM to work.
+The diffrence being that there are no preset transitions between the different actions. 
 
-
-but instead the states/actions each have a list of world changes and a list of world prerequisites.
-the pawn controlled by the AI then checks the world state to see the situation its in, 
-sends this situation to a Planner, witch keeps al the states and actions.
-the planner  checks for a way to achieve the targeted goal. and then returns the plan to the controlled pawn.
+But instead the actions each have a list of world changes and a list of world prerequisites.
+The pawn controlled by the AI then checks the world state to see the situation its in, 
+Sends this situation to a Planner, witch keeps al the states and actions.
+The planner checks for a way to achieve the targeted goal. and then returns the plan to the controlled pawn.
 
 
 The Result:
@@ -88,6 +84,21 @@ the FSM will check if the action is completed, and remove it from the planned ac
 ![image](https://user-images.githubusercontent.com/45353205/150393466-e259f2fe-3058-4d89-a190-8ea67a752a5e.png)
 
 
+After All actions Are completed, the plan becomes invalid and the AI returns to the idle state :).
+in witch the agent wil again ask the planner for a plan it can perform.
+
+![image](https://user-images.githubusercontent.com/45353205/150396054-fa2ec82b-8cc3-4988-a156-1097ecaca12d.png)
+
+Improvements that i could make:
+The planner right now treats all actions as the same costs, in a more developed GOAP AI you want to make certain task more expencive then others.
+
+The planner right now is using depth first search, to make goap better on a larger scale i would need to change this to better search alogrithm (AStar for example).
+
+The world state list holds strings and bool only, strings are easier to make mistakes with, (simple mistypes, etc), there could be better value types for keys.(Enums for example). Also the bools could be changed to a typename making it possible to change the vartype, making the worldstate more flexibal.
+
+In general add more stuff and figure a way to make the agent have different Goals at the same time. maybe by giving the GOAP agent better knowledge of the world and changing it goal depending on this.
+
+
 Sources i used to create my little goap ai.
 
 GOAP explained by Jeff Orkin. IA Lead of the GOAP AI in multiple games (FEAR,Stalker,..)
@@ -97,5 +108,5 @@ How AI in Games Works Written by Ben Hardwidge
 2:https://www.bit-tech.net/reviews/gaming/how-ai-in-games-works/3/
 
 Goal Oriented Action Planning for a Smarter AI for Unity written by Brent Owens.
-Reading his Unity Example to get started, and for bringing me on the Idea
+I Read his Unity Example to get started, and for bringing me on the idea of making this in c++.
 3:https://gamedevelopment.tutsplus.com/tutorials/goal-oriented-action-planning-for-a-smarter-ai--cms-20793
