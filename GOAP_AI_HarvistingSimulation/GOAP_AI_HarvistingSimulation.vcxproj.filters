@@ -96,6 +96,9 @@
     <ClCompile Include="EFiniteStateMachine.cpp">
       <Filter>Elite FrameWork</Filter>
     </ClCompile>
+    <ClCompile Include="PickUpPickAxeAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EGraphConnectionTypes.h">
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="StatesAndTranstions.h">
       <Filter>FSM\States</Filter>
+    </ClInclude>
+    <ClInclude Include="PickUpPickAxeAction.h">
+      <Filter>GOAP\Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

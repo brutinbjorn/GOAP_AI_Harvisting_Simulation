@@ -33,7 +33,7 @@ public:
 	virtual bool Perform(GOAPAgent* , float ) { return false;};
 	virtual bool RequiresInRange() {return false;};
 	virtual void SetInRange(bool InRange = false) { m_InRange = InRange; };
-	virtual bool IsInRange() { return m_InRange; };
+	virtual bool IsInRange(GOAPAgent* ) { return m_InRange; };
 
 	void AddPrecondition(std::string key, bool val)
 	{

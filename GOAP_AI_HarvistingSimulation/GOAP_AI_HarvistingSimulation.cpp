@@ -16,6 +16,10 @@ int main()
     std::string ch;
     do
     {
+
+        std::cout << std::endl;
+        std::cin.clear();
+    	
         ch = std::cin.get();
 
     	int turnsToTake = 0;
@@ -25,10 +29,10 @@ int main()
         }
         catch (std::invalid_argument a)
         {
-            std::cout << "invalid input, type a number for seconds to pass, \n or x to close the program ";
+            std::cout << "type a integer number for seconds to pass, \n or x to close the program ";
         }
 
-        if (ch[0] != 'x' && turnsToTake < 0);
+        if (ch[0] != 'x' && turnsToTake > 0)
         {
 
             for (int i = 0; i < turnsToTake * 4; i++)

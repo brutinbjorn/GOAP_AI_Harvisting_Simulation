@@ -41,7 +41,7 @@ std::map<std::string, bool> GOAPAgent::GetWorldState()
 {
 	std::map<std::string, bool> WorldData;
 	WorldData["HasOre"]= !m_inventory.m_Resources.empty();
-	
+	WorldData["HasPickAxe"] = m_inventory.ToolType == "ToolPickAxe";
 
 	return WorldData;
 }

@@ -2,6 +2,7 @@
 
 #include "MineCoalAction.h"
 #include "DropOffCoalAction.h"
+#include "PickUpPickAxeAction.h"
 
 GOAP_Application::~GOAP_Application()
 {
@@ -9,13 +10,13 @@ GOAP_Application::~GOAP_Application()
 
 	delete m_pPlanner;
 	
-	for (int i = 0; i < m_WorldObjects.size(); i++)
+	for (size_t i = 0; i < m_WorldObjects.size(); i++)
 		delete m_WorldObjects[i];
 
-	for (int i = 0; i < m_pStates.size(); i++)
+	for (size_t i = 0; i < m_pStates.size(); i++)
 		delete m_pStates[i];
 
-	for (int i = 0; i < m_pTransitions.size(); i++)
+	for (size_t i = 0; i < m_pTransitions.size(); i++)
 		delete m_pTransitions[i];
 	
 	
@@ -25,7 +26,7 @@ GOAP_Application::~GOAP_Application()
 void GOAP_Application::Start()
 {
 	//locations
-	ResourceSpot* pRecourceSpot1 = new ResourceSpot({ 10,25 }, 3);
+	ResourceSpot* pRecourceSpot1 = new ResourceSpot({ 40,20 }, 3);
 	m_WorldObjects.push_back(pRecourceSpot1);
 
 	auto *pBaseSpot = new BaseSpot({0,0},3);
@@ -63,12 +64,17 @@ void GOAP_Application::Start()
 	
 	//Actions
 	auto* CollectOreAction = new MineCoalAction();
-	CollectOreAction->SetResourceSpot(pRecourceSpot1);
+	//CollectOreAction->SetResourceSpot(pRecourceSpot1);
 	m_pAgent->AddAction(CollectOreAction);
 	
-	auto* DropOffCoalAction = new ::DropOffCoalAction();
-	DropOffCoalAction->SetBaseSpot(pBaseSpot);
-	m_pAgent->AddAction(DropOffCoalAction);
+	auto* dropOffCoalAction = new DropOffCoalAction();
+	//DropOffCoalAction->SetBaseSpot(pBaseSpot);
+	m_pAgent->AddAction(dropOffCoalAction);
+
+	auto* pickupPickaxe = new PickUpPickAxeAction();
+	
+	m_pAgent->AddAction(pickupPickaxe);
+	
 	
 
 	

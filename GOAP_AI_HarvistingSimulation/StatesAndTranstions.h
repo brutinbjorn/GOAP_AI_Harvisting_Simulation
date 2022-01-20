@@ -39,8 +39,9 @@ public:
 		
 		if(Plan.front()->RequiresInRange() && object != nullptr)
 		{
-			if(!Plan.front()->IsInRange())
+			if(!Plan.front()->IsInRange(pAgent))
 			{
+				std::cout << "Moving to location" << std::endl;
 				bool GotInRange = pAgent->MoveAgent(Plan.front(), deltaTime);
 
 
@@ -126,7 +127,7 @@ public:
 		if(pAgent->HasAPlan())
 		{
 			currentAction = plan.front();
-			bool inRange = currentAction->RequiresInRange() ? currentAction->IsInRange() : true;
+			bool inRange = currentAction->RequiresInRange() ? currentAction->IsInRange(pAgent) : true;
 
 			if(inRange)
 			{
@@ -174,14 +175,24 @@ class IsInRange : public Elite::FSMTransition
 		GOAPAgent* pAgent = nullptr;
 		pBlackboard->GetData("Agent", pAgent);
 		
-		bool* pIsInRange = nullptr;
-		pBlackboard->GetData("IsInRange", pIsInRange);
+		std::list<Action*>& plan = pAgent->GetCurrentPlan();
+		if (plan.empty())
+		{
+			std::cout << "plan did not fail but no Real plan returned" << std::endl;
+			return false;
+		}
+
 		
-		if (!pAgent || !pIsInRange)
+		Action* currentAction = plan.front();
+
+		bool inRange = currentAction->RequiresInRange() ? currentAction->IsInRange(pAgent) : true;
+
+
+		
+		if (!pAgent)
 			return false;
 
-
-		return (*pIsInRange);
+		return (inRange);
 	}
 };
 
@@ -192,13 +203,25 @@ class IsNotInRange : public Elite::FSMTransition
 		GOAPAgent* pAgent = nullptr;
 		pBlackboard->GetData("Agent", pAgent);
 
-		bool* pIsInRange = nullptr;
-		pBlackboard->GetData("IsInRange", pIsInRange);
+		//bool* pIsInRange = nullptr;
+		//pBlackboard->GetData("IsInRange", pIsInRange);
 
-		if (!pAgent || !pIsInRange)
+		std::list<Action*>& plan = pAgent->GetCurrentPlan();
+		if (plan.empty())
+		{
+			std::cout << "plan did not fail but no Real plan returned" << std::endl;
+			return false;
+		}
+
+		Action* currentAction = plan.front();
+		
+		bool inRange = currentAction->RequiresInRange() ? currentAction->IsInRange(pAgent) : true;
+		
+
+		if (!pAgent)
 			return false;
 
 
-		return !(*pIsInRange);
+		return !(inRange);
 	}
 };

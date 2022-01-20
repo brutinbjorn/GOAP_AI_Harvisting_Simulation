@@ -23,6 +23,12 @@ public:
 
 	bool IsDone() override { return m_DroppedOffOre; };
 
+	bool IsInRange(GOAPAgent* pAgent) override
+	{
+		return (Elite::Distance(m_pBase->GetPosition(), pAgent->GetPosition()) < 1.f);
+	}
+
+	
 	bool RequiresInRange() override{return true;};
 
 	bool CheckProceduralPrecondition(GOAPAgent* pAgent, std::vector<GameObject*>* WorldObjects) override

@@ -17,9 +17,9 @@ public:
 		int pointsGained = 0;
 
 		
-		for (int i = 0; i < resources.size(); i++)
+		for (size_t i = 0; i < resources.size(); i++)
 		{
-			resources[i];
+			//resources[i];
 			pointsGained++;
 		}
 		resources.clear();
@@ -29,6 +29,14 @@ public:
 
 		std::cout << "Total score now: " << m_CollectedScore << std::endl;
 		
+	}
+
+	virtual void PickUpTool(GOAPAgent* pAgent)
+	{
+		auto& inventory = pAgent->GetRefInventory();
+
+		inventory.ToolType = "ToolPickAxe";
+		inventory.m_ToolHealth = 3;
 	}
 
 private:

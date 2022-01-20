@@ -151,6 +151,7 @@
     <ClCompile Include="GOAP_AI_HarvistingSimulation.cpp" />
     <ClCompile Include="GOAP_Application.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="PickUpPickAxeAction.cpp" />
     <ClCompile Include="Planner.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ResourceSpot.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="GOAP_Application.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="MineCoalAction.h" />
+    <ClInclude Include="PickUpPickAxeAction.h" />
     <ClInclude Include="Planner.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Resources.h" />

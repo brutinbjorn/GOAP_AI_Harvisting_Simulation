@@ -11,6 +11,7 @@ public:
 	{
 		//AddPrecondition("HasTool", true);
 		AddPrecondition("HasOre", false);
+		AddPrecondition("HasPickAxe", true);
 		AddEffect("HasOre", true);
 	}
 
@@ -25,6 +26,11 @@ public:
 	bool IsDone() override { return m_mined; };
 
 	bool RequiresInRange() override { return true; };
+
+	bool IsInRange(GOAPAgent* pAgent) override
+	{
+		return (Elite::Distance(m_pResourceSpot->GetPosition(),pAgent->GetPosition()) < 1.f) ;
+	}
 
 	bool CheckProceduralPrecondition(GOAPAgent* pAgent,std::vector<GameObject*>* world) override
 	{
@@ -63,14 +69,22 @@ public:
 	{
 		m_ElapsedMineTime += dt;
 
-		if(m_ElapsedMineTime > m_MineDuration)
+		if(pAgent->GetRefInventory().ToolType == "ToolPickAxe")
 		{
-			std::cout << "mining done" << std::endl;
-			pAgent->GetRefInventory().m_Resources.emplace_back(ResourceType::coal) ;
-			m_mined = true;
-			
+			std::cout << "mining..." << std::endl;
+			if(m_ElapsedMineTime > m_MineDuration)
+			{
+				std::cout << "mining done" << std::endl;
+				pAgent->GetRefInventory().m_Resources.emplace_back(ResourceType::coal) ;
+
+				pAgent->GetRefInventory().m_ToolHealth--;
+				if (pAgent->GetRefInventory().m_ToolHealth <= 0)
+					pAgent->GetRefInventory().ToolType = "";
+				m_mined = true;
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	void PrintActionType() override { std::cout << "mineCoalAction, "; };
