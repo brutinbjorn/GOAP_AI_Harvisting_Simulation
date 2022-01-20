@@ -69,7 +69,7 @@ public:
 	{
 		m_ElapsedDropOffTime += dt;
 
-		std::cout << "mining..." << std::endl;
+		std::cout << "dropping..." << std::endl;
 		
 		if(m_ElapsedDropOffTime > m_DropOffDuration)
 		{
