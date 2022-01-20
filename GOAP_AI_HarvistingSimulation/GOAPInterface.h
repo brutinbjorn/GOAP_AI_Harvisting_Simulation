@@ -22,6 +22,5 @@ public:
 
 	virtual void ActionsFinished() = 0;
 	virtual void PlanAborted(Action* aborter) = 0;
-	//virtual bool MoveAgent(Action* nextAction) = 0;
 };
 

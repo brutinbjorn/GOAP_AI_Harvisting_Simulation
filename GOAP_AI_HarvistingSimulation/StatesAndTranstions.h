@@ -75,7 +75,7 @@ public:
 		if (!planner)
 			return;
 		
-		std::list<Action*> actionPlan = planner->plan(pAgent,pAgent->CreateGoalState());
+		std::list<Action*> actionPlan = planner->Plan(pAgent,pAgent->CreateGoalState());
 
 		if (!actionPlan.empty()) // plan found
 		{

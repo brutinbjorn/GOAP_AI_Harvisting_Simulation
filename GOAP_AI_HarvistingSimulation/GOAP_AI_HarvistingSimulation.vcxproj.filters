@@ -96,8 +96,11 @@
     <ClCompile Include="EFiniteStateMachine.cpp">
       <Filter>Elite FrameWork</Filter>
     </ClCompile>
+    <ClCompile Include="MineCoalAction.cpp">
+      <Filter>GOAP\Actions</Filter>
+    </ClCompile>
     <ClCompile Include="PickUpPickAxeAction.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GOAP\Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

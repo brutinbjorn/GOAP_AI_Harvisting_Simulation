@@ -18,9 +18,6 @@ GOAP_Application::~GOAP_Application()
 
 	for (size_t i = 0; i < m_pTransitions.size(); i++)
 		delete m_pTransitions[i];
-	
-	
-	
 }
 
 void GOAP_Application::Start()
@@ -61,22 +58,16 @@ void GOAP_Application::Start()
 	m_pTransitions.push_back(pNotInRange);
 
 	
-	
-	//Actions
+
 	auto* CollectOreAction = new MineCoalAction();
-	//CollectOreAction->SetResourceSpot(pRecourceSpot1);
 	m_pAgent->AddAction(CollectOreAction);
 	
 	auto* dropOffCoalAction = new DropOffCoalAction();
-	//DropOffCoalAction->SetBaseSpot(pBaseSpot);
 	m_pAgent->AddAction(dropOffCoalAction);
 
 	auto* pickupPickaxe = new PickUpPickAxeAction();
-	
 	m_pAgent->AddAction(pickupPickaxe);
 	
-	
-
 	
 	auto* pFSM = new Elite::FiniteStateMachine(idle, newBB);
 
@@ -84,9 +75,6 @@ void GOAP_Application::Start()
 	pFSM->AddTransition(performAction, idle, pHasNoPlan);
 
 
-
-	
-	//pFSM->AddTransition(idle, MoveAction, pNotInRange);
 	pFSM->AddTransition(MoveAction, idle, pHasNoPlan);
 	pFSM->AddTransition(MoveAction, performAction, pIsInRange);
 

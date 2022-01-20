@@ -89,39 +89,5 @@ protected:
 };
 
 
-//class GoToAction : public Action
-//{
-//public:
-//	GoToAction() = default;
-//	~GoToAction() = default;
-//private:
-//	bool m_Arrived = false;
-//	LocationNode* m_pTargetLocation = nullptr;
-//};
-//
-//
-//class MineOreAction : public Action
-//{
-//public:
-//	MineOreAction(ResourceNode* pResource)
-//	{
-//		m_Preconditions["HasTool"] = true;
-//		m_Preconditions["HasOre"] = false;
-//		m_Effects["HasOre"] = true;
-//	}
-//
-//	~MineOreAction() = default;
-//
-//	void Reset() override
-//	{
-//		m_Mined = false;
-//		m_pResourceNode = nullptr;
-//	};
-//	bool IsDone() override { return m_Mined; };
-//	bool RequiresInRange() override { return true; };
-//
-//private:
-//	bool m_Mined = false;
-//	ResourceNode* m_pResourceNode = nullptr;
-//};
+
 

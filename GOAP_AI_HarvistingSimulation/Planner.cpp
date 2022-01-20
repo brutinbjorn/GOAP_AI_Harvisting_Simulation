@@ -6,7 +6,7 @@
 #include "Actions.h"
 
 
-std::list<Action*> Planner::plan(GOAPAgent* agent, 
+std::list<Action*> Planner::Plan(GOAPAgent* agent, 
     std::map<std::string, bool> goal)
 {
 	// get all possible actions the agent can perform
@@ -48,7 +48,7 @@ std::list<Action*> Planner::plan(GOAPAgent* agent,
 	{
 		// no plan.
 		std::cout << "NO PLAN" << std::endl;
-		for (int i = 0; i < m_Nodes.size(); i++)
+		for (size_t i = 0; i < m_Nodes.size(); i++)
 			delete m_Nodes[i];
 
 		return std::list<Action*>{};
@@ -60,7 +60,7 @@ std::list<Action*> Planner::plan(GOAPAgent* agent,
 	Node* cheapest = leaves[0];
 	for (auto leaf : leaves)
 	{
-		if (leaf->m_RunningCost < cheapest->m_RunningCost)
+		if (leaf->runningCost < cheapest->runningCost)
 			cheapest = leaf;
 	}
 
@@ -76,11 +76,11 @@ std::list<Action*> Planner::plan(GOAPAgent* agent,
 	{
 		if(n->m_Action != nullptr)
 			result.push_front(n->m_Action);
-		n = n->m_Parent;
+		n = n->pParent;
 	}
 
 	
-	for (int i = 0; i < m_Nodes.size(); ++i)
+	for (size_t i = 0; i < m_Nodes.size(); ++i)
 		delete m_Nodes[i];
 
 	m_Nodes.clear();
@@ -96,7 +96,7 @@ std::list<Action*> Planner::plan(GOAPAgent* agent,
 }
 
 // returns true if all the pairs in test are inside states and are equil
-bool Planner::inState(std::map<std::string, bool> test, std::map<std::string, bool> states)
+bool Planner::InState(std::map<std::string, bool> test, std::map<std::string, bool> states)
 {
 	bool AllMatchesFound = true;
 	for (auto pair : test)
@@ -127,17 +127,17 @@ bool Planner::BuildGraph(Node* Parent, std::vector<Node*>& leaves, std::vector<A
 	{
 
 		//checks if the requirements are fufilled in the parent state
-		if(inState(action->GetPreconditions(),Parent->m_State))
+		if(InState(action->GetPreconditions(),Parent->state))
 		{
 
 			// fufill the effect changes
-			std::map<std::string, bool> currentState = PopulateState(Parent->m_State, action->GetEffects());
+			std::map<std::string, bool> currentState = PopulateState(Parent->state, action->GetEffects());
 
-			Node *node = new Node(Parent, Parent->m_RunningCost + action->GetCost(), currentState, action);
+			Node *node = new Node(Parent, Parent->runningCost + action->GetCost(), currentState, action);
 
 			m_Nodes.push_back(node);
 			//check if the goal is fufilled.
-			if(inState(goal,currentState))
+			if(InState(goal,currentState))
 			{
 				// if true, add the result to the leaves and return plan found;
 				leaves.push_back(node);

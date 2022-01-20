@@ -15,6 +15,7 @@
 class Action;
 class Planner;
 
+
 class GOAPAgent : public GOAPInterface
 {
 public:
@@ -40,8 +41,8 @@ public:
 	void ActionsFinished() override;
 
 	void Update(float dt);
-
 	void SetDicisionMaking(Elite::FiniteStateMachine* FSM) { m_pDesicionMaking = FSM; };
+
 	void SetPlanner(Planner* newPlanner);
 	Planner* GetPlanner() { return m_pPlanner; };
 	

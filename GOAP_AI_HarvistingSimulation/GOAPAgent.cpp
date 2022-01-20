@@ -30,7 +30,7 @@ GOAPAgent::~GOAPAgent()
 	SAFE_DELETE(m_pDesicionMaking);
 
 
-	for (int i = 0; i < m_pAvailableActions.size(); i++)
+	for (size_t i = 0; i < m_pAvailableActions.size(); i++)
 	{
 		SAFE_DELETE(m_pAvailableActions[i]);
 	}
@@ -110,28 +110,3 @@ void GOAPAgent::PlanAborted(Action*  aborter)
 
 
 
-//bool GOAPAgent::MoveAgent(Action* nextAction)
-//{
-//	auto target = nextAction->GetTarget();
-//
-//	auto m_pHeuristicFunction = Elite::HeuristicFunctions::Chebyshev;
-//
-//	auto pathFinder = Elite::BFS<LocationNode,Elite::GraphConnection>(m_pWorldNodes);
-//
-//	auto path =pathFinder.FindPath(m_pLocation, target);
-//
-//	if (path.back() == m_pLocation)
-//		return true;
-//
-//	if (path.size() > 1)
-//		m_pLocation = path[1];
-//	std::cout << "agent moved loc" << std::endl;
-//	if (m_pLocation == target)
-//	{
-//		
-//		return true;
-//	}
-//	return false;
-//	
-//}
-//
